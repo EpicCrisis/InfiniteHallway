@@ -1,2 +1,2 @@
 # InfiniteHallway
-Tech to simulate infinite hallway.
+Tech to simulate infinite hallway
