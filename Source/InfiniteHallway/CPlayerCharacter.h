@@ -7,6 +7,7 @@
 
 class UInputMappingContext;
 class UInputAction;
+class ACHallwayManager;
 
 UCLASS()
 class INFINITEHALLWAY_API ACPlayerCharacter : public ACharacter
@@ -16,6 +17,8 @@ class INFINITEHALLWAY_API ACPlayerCharacter : public ACharacter
 public:
 	ACPlayerCharacter();
 
+	UPROPERTY(VisibleAnywhere)
+	ACHallwayManager* m_HallwayManager = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputMappingContext* DefaultMappingContext = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")

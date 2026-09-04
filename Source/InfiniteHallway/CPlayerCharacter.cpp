@@ -1,6 +1,8 @@
 #include "CPlayerCharacter.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "CHallwayManager.h"
+#include "Kismet/GameplayStatics.h"
 
 ACPlayerCharacter::ACPlayerCharacter()
 {
@@ -12,6 +14,9 @@ void ACPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	m_HallwayManager = Cast<ACHallwayManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ACHallwayManager::StaticClass()));
+	m_HallwayManager->m_PlayerCharacter = this;
+	m_HallwayManager->SetupManager();
 }
 
 void ACPlayerCharacter::Tick(float DeltaTime)
