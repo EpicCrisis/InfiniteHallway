@@ -3,11 +3,12 @@
 #include "EnhancedInputComponent.h"
 #include "CHallwayManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "CFogAnchor.h"
+#include "Components/CapsuleComponent.h"
 
 ACPlayerCharacter::ACPlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 void ACPlayerCharacter::BeginPlay()
@@ -17,6 +18,12 @@ void ACPlayerCharacter::BeginPlay()
 	m_HallwayManager = Cast<ACHallwayManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ACHallwayManager::StaticClass()));
 	m_HallwayManager->m_PlayerCharacter = this;
 	m_HallwayManager->SetupManager();
+	
+	if (m_FogAnchorClass)
+	{
+		m_FogAnchor = GetWorld()->SpawnActor<ACFogAnchor>(m_FogAnchorClass, GetActorLocation(), FRotator::ZeroRotator);
+		m_FogAnchor->m_PlayerToFollow = this;
+	}
 }
 
 void ACPlayerCharacter::Tick(float DeltaTime)

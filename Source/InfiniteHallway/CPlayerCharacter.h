@@ -8,6 +8,7 @@
 class UInputMappingContext;
 class UInputAction;
 class ACHallwayManager;
+class ACFogAnchor;
 
 UCLASS()
 class INFINITEHALLWAY_API ACPlayerCharacter : public ACharacter
@@ -16,6 +17,27 @@ class INFINITEHALLWAY_API ACPlayerCharacter : public ACharacter
 
 public:
 	ACPlayerCharacter();
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//USceneComponent* m_FogAnchor = nullptr;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//UStaticMeshComponent* m_FogBlockerA = nullptr;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//UStaticMeshComponent* m_FogBlockerB = nullptr;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//UStaticMeshComponent* m_FogBlockerC = nullptr;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//UStaticMeshComponent* m_FogBlockerD = nullptr;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	//TSubclassOf<ACFogBlocker> m_FogBlockerClass;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Fog")
+	//TArray<ACFogBlocker*> m_FogBlockers;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fog")
+	TSubclassOf<ACFogAnchor> m_FogAnchorClass = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Fog")
+	ACFogAnchor* m_FogAnchor = nullptr;
 
 	UPROPERTY(VisibleAnywhere)
 	ACHallwayManager* m_HallwayManager = nullptr;
